@@ -3,13 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Moment 1</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.ts" type="module"></script>
 </head>
 <body>
 
-    <h1>Test</h1>
+    <h1>KURSER</h1><br>
+
+    <h2>Lägg till kurser</h2><br>
+
+    <form id="courseForm">
+        <label for="code">Kurskod:</label>
+        <input type="text" id="code" name="code" required>
     
+        <label for="name">Kursnamn:</label>
+        <input type="text" id="name" name="name" required>
+    
+        <label for="progression">Progression:</label>
+        <input type="text" id="progression" name="progression" required>
+    
+        <label for="syllabus">URL till kursplanen:</label>
+        <input type="text" id="syllabus" name="syllabus" required>
+    
+        <button class="btn" id="addCourse">Lägg till kurs</button>
+    </form><br>
+
+    <h2>Mina sparade kurser</h2>
+    <div id="courseList">
+    </div>
 </body>
 </html>
