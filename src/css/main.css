@@ -24,7 +24,7 @@ label {
     margin-bottom: 5px;
 }
 
-input[type="text"] {
+input[type="text"], #progression {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
