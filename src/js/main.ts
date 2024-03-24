@@ -26,4 +26,25 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem('courses', JSON.stringify(courses));
     }
 
+    // Funktion för att visa kurslistan på webbsidan
+    function displayCourses(courses: CourseInfo[]): void {
+    courseListEl.innerHTML = ''; // Rensa befintligt innehåll
+    
+    courses.forEach((course, index) => {
+      const courseItem = document.createElement('div');
+      courseItem.classList.add('course-item');
+      courseItem.innerHTML = `
+        <strong>Kurskod:</strong> ${course.code}<br>
+        <strong>Kursnamn:</strong> ${course.name}<br>
+        <strong>Progression:</strong> ${course.progression}<br>
+        <strong>URL till kursplanen:</strong> <a href="${course.syllabus}" target="_blank">${course.syllabus}</a><br>
+    `;
+
+      courseListEl.appendChild(courseItem);
+     });
+   }
+
+   // Hämta sparade kurser från localStorage och visa dem på webbsidan
+const savedCourses = getSavedCourses();
+displayCourses(savedCourses);
 });
