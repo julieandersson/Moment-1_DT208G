@@ -115,6 +115,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const progression = progressionInput.value as 'A' | 'B' | 'C';
     const syllabus = syllabusInput.value.trim();
 
+    // Validera att alla fält är ifyllda och att en progression har valts
+    if (code === '' || name === '' || progression !== 'A' && progression !== 'B' && progression !== 'C' || syllabus === '') {
+        alert("Vänligen fyll i alla fält.");
+        return; // Avbryt funktionen om något fält är tomt
+    } 
+
     // Validering för unik kurskod
      const existingCourses = getSavedCourses();
      const isCodeUnique = !existingCourses.some(course => course.code === code);
