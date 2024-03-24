@@ -44,7 +44,24 @@ document.addEventListener("DOMContentLoaded", function() {
      });
    }
 
+   // Funktion för att lägga till en ny kurs
+    function addCourse(): void {
+    const codeInput = document.getElementById("code") as HTMLInputElement;
+    const nameInput = document.getElementById("name") as HTMLInputElement;
+    const progressionInput = document.getElementById("progression") as HTMLSelectElement;
+    const syllabusInput = document.getElementById("syllabus") as HTMLInputElement;
+
+    const code = codeInput.value.trim();
+    const name = nameInput.value.trim();
+    const progression = progressionInput.value as 'A' | 'B' | 'C';
+    const syllabus = syllabusInput.value.trim();
+  
+}
+
+   // Händelselyssnare för att lägga till en kurs när knappen klickas
+    addButtonEl?.addEventListener("click", addCourse);
+
    // Hämta sparade kurser från localStorage och visa dem på webbsidan
-const savedCourses = getSavedCourses();
-displayCourses(savedCourses);
+    const savedCourses = getSavedCourses();
+    displayCourses(savedCourses);
 });
