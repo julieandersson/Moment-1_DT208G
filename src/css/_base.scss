@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* primär text */
+$primary-font: "Montserrat", sans-serif;
+
+/* färger */
+$standard-green: rgb(173, 224, 160);
+$standard-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+$body-color: rgb(255, 248, 251);
+$standard-white: white;
+$standard-black: black;
+$light-green: rgb(220, 255, 211);
+$button-green: rgb(126, 197, 109);
+$button-green-hover: darken($button-green, 30%);
+$button-pink: rgb(255, 142, 174);
+$button-pink-hover: darken($button-pink, 20%);
+$item-pink: rgb(255, 219, 229);
