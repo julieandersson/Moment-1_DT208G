@@ -17,6 +17,11 @@ header {
 
 h1, h2 {
     text-align: center;
+    color: base.$standard-black;
+}
+
+a {
+    text-decoration: none;
 }
 
 main {
@@ -35,7 +40,7 @@ footer {
 }
 
 footer p {
-    padding-top: 20px;
+    padding-top: 25px;
 }
 
 #courseForm {
@@ -110,4 +115,36 @@ input[type="text"], #progression {
 
 .edit-button:hover {
     background-color: #ccc;
+}
+
+/* MEDIA QUERIES */
+
+/* Tablet */
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+    #courseForm, .course-item {
+        max-width: 500px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    #courseForm, .course-item {
+        max-width: 350px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    footer p {
+        font-size: 13px;
+    }
+
+    #addCourse, #clearbutton {
+        width: 100%;
+    }
 }
