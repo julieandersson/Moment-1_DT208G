@@ -55,7 +55,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const name = nameInput.value.trim();
     const progression = progressionInput.value as 'A' | 'B' | 'C';
     const syllabus = syllabusInput.value.trim();
-  
+
+    // Validering för unik kurskod
+     const existingCourses = getSavedCourses();
+     const isCodeUnique = !existingCourses.some(course => course.code === code);
+    
+        if (isCodeUnique) {
+            const newCourse: CourseInfo = { code, name, progression, syllabus };
+            existingCourses.push(newCourse);
+            saveCourses(existingCourses);
+            displayCourses(existingCourses);
+            // Återställ formuläret efter att kursen har lagts till
+            codeInput.value = '';
+            nameInput.value = '';
+            progressionInput.value = '';
+            syllabusInput.value = '';
+        } else {
+            alert("Kurskoden måste vara unik.");
+        }
 }
 
    // Händelselyssnare för att lägga till en kurs när knappen klickas
