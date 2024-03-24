@@ -40,9 +40,68 @@ document.addEventListener("DOMContentLoaded", function() {
         <strong>URL till kursplanen:</strong> <a href="${course.syllabus}" target="_blank">${course.syllabus}</a><br>
     `;
 
+    // Skapar och lägger till "Ändra kursinformation"-knappen inuti varje tillagd kurs på webbplatsen
+       const editButton = document.createElement('button');
+       editButton.classList.add('btn', 'edit-button');
+       editButton.textContent = 'Ändra kursinformation';
+       editButton.dataset.index = index.toString();
+       courseItem.appendChild(editButton);
+
       courseListEl.appendChild(courseItem);
      });
-   }
+
+    // Lägg till händelselyssnare för varje "Ändra kurs"-knapp
+    const editButtons = document.querySelectorAll('.edit-button');
+    editButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const index = parseInt(button.getAttribute('data-index') || '0', 10);
+            const courseToEdit = savedCourses[index];
+            
+    // Fyll i formuläret med den valda kursens information
+    const codeInput = document.getElementById("code") as HTMLInputElement;
+    const nameInput = document.getElementById("name") as HTMLInputElement;
+    const progressionInput = document.getElementById("progression") as HTMLSelectElement;
+    const syllabusInput = document.getElementById("syllabus") as HTMLInputElement;
+
+    codeInput.value = courseToEdit.code;
+    nameInput.value = courseToEdit.name;
+    progressionInput.value = courseToEdit.progression;
+    syllabusInput.value = courseToEdit.syllabus;
+
+    // Ändra knappens text till "Spara ändringar"
+    const addButton = document.getElementById("addCourse") as HTMLButtonElement;
+    addButton.textContent = "Spara ändringar";
+
+    // Byt ut händelselyssnaren för "Lägg till kurs" för att hantera sparandet av ändringar
+    addButton.removeEventListener("click", addCourse);
+    addButton.addEventListener("click", () => {
+
+        // Uppdaterar kursen i listan efter ändring
+        const updatedCourse: CourseInfo = {
+            code: codeInput.value.trim(),
+            name: nameInput.value.trim(),
+            progression: progressionInput.value as 'A' | 'B' | 'C',
+            syllabus: syllabusInput.value.trim()
+            };
+
+            savedCourses[index] = updatedCourse;
+            saveCourses(savedCourses);
+            displayCourses(savedCourses);
+
+            // Återställ formuläret och knappens text
+            addButton.textContent = "Lägg till kurs";
+            addButton.removeEventListener("click", addCourse);
+            addButton.addEventListener("click", addCourse);
+
+            codeInput.value = '';
+            nameInput.value = '';
+            progressionInput.value = '';
+            syllabusInput.value = '';
+        });
+    });
+}); 
+ 
+}
 
    // Funktion för att lägga till en ny kurs
     function addCourse(): void {
