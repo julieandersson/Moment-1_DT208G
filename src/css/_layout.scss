@@ -13,11 +13,16 @@ body {
 
 header {
     background-color: base.$standard-green;
+    height: 100px;
 }
 
 h1, h2 {
     text-align: center;
     color: base.$standard-black;
+}
+
+h1 {
+    padding-top: 10px;
 }
 
 a {
@@ -26,7 +31,7 @@ a {
 
 main {
     background-color: base.$standard-white;
-    width: 80%;
+    width: 95%;
     max-width: 1000px;
     padding: 10px;
     margin: 0 auto;
@@ -36,11 +41,11 @@ main {
 footer {
     text-align: center;
     background-color: base.$standard-green;
-    height: 70px;
+    height: 100px;
 }
 
 footer p {
-    padding-top: 25px;
+    padding-top: 30px;
 }
 
 #courseForm {
@@ -84,6 +89,7 @@ input[type="text"], #progression {
     @include component.button;
     background-color: base.$button-pink;
     color: base.$standard-black;
+    margin-top: 20px;
 }
 
 #clearbutton:hover {
