@@ -78,6 +78,15 @@ document.addEventListener("DOMContentLoaded", function() {
    // Händelselyssnare för att lägga till en kurs när knappen klickas
     addButtonEl?.addEventListener("click", addCourse);
 
+    // Funktion för att rensa kurserna från localStorage och från webbsidan
+    function clearCourses(): void {
+      localStorage.removeItem('courses');
+      courseListEl.innerHTML = ''; // Rensa kurslistan från webbsidan
+  }
+
+   // Händelselyssnare för att rensa kurserna när knappen klickas
+    clearButtonEl?.addEventListener("click", clearCourses);
+
    // Hämta sparade kurser från localStorage och visa dem på webbsidan
     const savedCourses = getSavedCourses();
     displayCourses(savedCourses);
