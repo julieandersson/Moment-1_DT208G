@@ -150,8 +150,12 @@ input[type="text"], #progression {
         font-size: 13px;
     }
 
-    #addCourse, #clearbutton {
+    #addCourse {
         width: 100%;
+    }
+
+    #clearbutton {
+        width: 350px;
     }
 
     .edit-button {
